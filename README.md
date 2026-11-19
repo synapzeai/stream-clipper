@@ -66,7 +66,7 @@ While it runs you'll see a status line:
 
 ## How it works
 
-1. `yt-dlp` pulls the live stream and `ffmpeg` saves it in 20-second chunks.
+1. `streamlink` pulls the live stream (skipping Twitch ad breaks, with `yt-dlp` as a fallback) and `ffmpeg` saves it in 20-second chunks.
 2. For Twitch, it joins the chat anonymously (read-only, no login) and tracks messages per second against a rolling "normal" level. Hype words like CLIP, LMAO, NO WAY count extra.
 3. When chat hits 3x normal for 3+ seconds (or the audio jumps), it marks a highlight and cuts 25s before to 10s after.
 4. Each clip is reframed to 9:16, captioned with Whisper (word-by-word highlight), and loudness-levelled to -14 LUFS.
