@@ -95,3 +95,27 @@ Too many clips? Raise `chat_spike_multiplier`. Too few? Lower it.
 ## License
 
 MIT. Built with Claude Code by [SynapzeAI](https://github.com/synapzeai).
+
+## Clipping Machine (runs a clipping page on autopilot)
+
+`scripts/machine.py` turns the clipper into a page that runs itself every 2 hours:
+
+1. **Scout**: pulls the most-viewed clips for your game from the last 24h through Twitch's free API, filters by language, views, length and blocked words, and keeps one clip per streamer.
+2. **Make**: downloads each clip, cuts it vertical with captions, plays the loudest moment first as a hook ("WAIT FOR IT..."), and credits the streamer on screen.
+3. **QA**: rejects anything the wrong size, silent, too short or too long.
+4. **Post**: schedules finished clips to TikTok and Instagram through Zernio, in your posting slots, with the streamer credited in the caption.
+5. **Stats + health**: pulls views, likes and shares. Two posts in a row stuck under 20 views after an hour pauses that platform for 24h.
+6. **Learn**: Claude Code reads the stats with `CYCLE.md`, writes one lesson to `learnings.md`, and tunes one setting in `machine.json` within fixed limits.
+
+Setup:
+
+```bash
+cp .env.example .env          # add Twitch + Zernio keys
+# edit machine.json: game, Zernio account ids under "platforms", timezone, posting slots
+.venv/bin/python scripts/machine.py cycle          # dry run, nothing is posted
+.venv/bin/python scripts/machine.py post --live    # really schedule
+bash schedule.sh install                           # every 2 hours from now on
+open state/dashboard.html
+```
+
+Warm up a new account by hand for the first week (watch, follow a few accounts in your niche) and start at 2 or 3 posts a day. Automating likes or scrolling breaks Instagram's rules, so this machine never does it. Only clip streamers who allow it.

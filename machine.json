@@ -1,0 +1,42 @@
+{
+  "game": "Grand Theft Auto VI",
+  "languages": [
+    "en"
+  ],
+  "lookback_hours": 24,
+  "min_views": 300,
+  "min_seconds": 12,
+  "max_seconds": 60,
+  "allowed_broadcasters": [],
+  "blocked_broadcasters": [],
+  "blocked_words": [
+    "nsfw",
+    "leak",
+    "spoiler"
+  ],
+  "clips_per_cycle": 2,
+  "hook_seconds": 2.5,
+  "hook_text": "WAIT FOR IT...",
+  "facecam_box": null,
+  "platforms": {
+    "tiktok": "",
+    "instagram": ""
+  },
+  "timezone": "Australia/Melbourne",
+  "post_slots": [
+    "08:00",
+    "12:00",
+    "16:00",
+    "19:00",
+    "22:00"
+  ],
+  "max_posts_per_day": 5,
+  "stuck_views": 20,
+  "stuck_after_minutes": 60,
+  "pause_hours_after_stuck": 24,
+  "hashtags": [
+    "#GTA6",
+    "#GTAVI",
+    "#gaming"
+  ]
+}
